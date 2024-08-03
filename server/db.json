@@ -1,16 +1,16 @@
 {
   "goods": [
     {
-      "id": "1",
-      "name": "Jim"
-    },
-    {
-      "id": "7488",
-      "name": "ferfe"
-    },
-    {
       "id": "cf4a",
-      "name": "gggg"
+      "name": "aloha"
+    },
+    {
+      "id": "bb55",
+      "name": "привет"
+    },
+    {
+      "id": "8197",
+      "name": "обед "
     }
   ]
 }

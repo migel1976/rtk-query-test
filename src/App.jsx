@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAddProductMutation, useDeleteProductMutation, useGetGoodsQuery } from "./redux";
+import { useAddProductMutation, useDeleteProductMutation, useGetGoodsQuery, useUpdateProductMutation } from "./redux";
 
 const App = () => {
   const [count, setCount] = useState('')
@@ -9,6 +9,7 @@ const App = () => {
   const [newProduct, setNewProduct] = useState('')
 
   const [deleteProduct] = useDeleteProductMutation()
+  const [updateProduct] = useUpdateProductMutation()
 
   if (isLoading) return <h1>...Loading</h1>
   const changeCount = (e) => {
@@ -28,6 +29,11 @@ const App = () => {
     await deleteProduct(id).unwrap()
   }
 
+  const onUpdateProduct = async (product) => {
+    const name = prompt() || ''
+    updateProduct({ ...product, name })
+  }
+
   return (
     <>
       {/* <select value={count} onChange={(e) => setCount(e.target.value)}> */}
@@ -42,8 +48,18 @@ const App = () => {
         <option value='3'>3</option>
       </select>
       <ul>
-        {data.map(el => <li key={el.id} onClick={() => onDeleteProduct(el.id)}>{el.name}</li>)}
-      </ul>
+        {/* {data.map(el => <li key={el.id} onClick={() => onDeleteProduct(el.id)}>{el.name}</li>)} */}
+        {data.map(el => {
+          return (
+            <>
+              <li key={el.id} onClick={() => onUpdateProduct(el)}>{el.name}</li>
+              <button onClick={() => onDeleteProduct(el.id)} >delete</button>
+            </>
+          )
+        })
+        }
+
+      </ul >
     </>
   )
 }
