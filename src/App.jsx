@@ -6,6 +6,7 @@ const App = () => {
   const [name, setName] = useState('')
   const [edit, setEdit] = useState(false)
   const [count, setCount] = useState('')
+  const [filterValue, setFilterValue] = useState('')
   const { data, isLoading } = useGetGoodsQuery(count)
 
   const [addProduct, { isError }] = useAddProductMutation()
@@ -49,35 +50,44 @@ const App = () => {
     setEdit(false)
   }
 
+
+  const filtereData = data.filter(el => {
+    return el.name.toLowerCase().includes(filterValue);
+
+  })
+
+
   return (
     <>
       {/* <select value={count} onChange={(e) => setCount(e.target.value)}> */}
+      <input type='text' onChange={(e) => setFilterValue(e.target.value)} />
       <diV>
         <input type='text' value={newProduct} onChange={(e) => setNewProduct(e.target.value)} />
       </diV>
       <button onClick={onNewProduct}>add </button>
-      <select value={count} onChange={(e) => changeCount(e)}>
-        <option value=''>All</option>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-      </select>
+      {/* <select value={count} onChange={(e) => changeCount(e)}> */}
+      {/*   <option value=''>All</option> */}
+      {/*   <option value='1'>1</option> */}
+      {/*   <option value='2'>2</option> */}
+      {/*   <option value='3'>3</option> */}
+      {/* </select> */}
       <ul>
         {/* {data.map(el => <li key={el.id} onClick={() => onDeleteProduct(el.id)}>{el.name}</li>)} */}
-        {data.map(el => {
+        {/* {data.map(el => { */}
+        {filtereData.map(el => {
           return (
             <>
               {edit && el.id === id ?
-                <>
+                <div key={el.id}>
                   <input value={name} onChange={(e) => setName(e.target.value)} />
                   <button onClick={() => onSave(el)}>save</button>
                   <button onClick={onCancel}>cancel</button>
-                </>
+                </div>
                 :
-                <>
-                  <li key={el.id} onClick={() => onUpdateProduct(el)}>{el.name}</li>
+                <div key={el.id}>
+                  <li onClick={() => onUpdateProduct(el)}>{el.name}</li>
                   <button onClick={() => onDeleteProduct(el.id)} >delete</button>
-                </>
+                </div>
               }
               {/* <li key={el.id} onClick={() => onUpdateProduct(el)}>{el.name}</li> */}
             </>
