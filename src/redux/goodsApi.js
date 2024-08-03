@@ -11,10 +11,11 @@ export const goodsApi = createApi({
         console.log(limit)
         return `goods?${limit && `_limit=${limit}`}`
       },
-      providesTags: (result) =>
-        result
-          ? [...result.map(({ id }) => ({ type: 'Product', id })), 'Product']
-          : ['Product'],
+      providesTags: ['Product']
+      // providesTags: (result) => ['Product']
+      // result
+      //   ? [...result.map(({ id }) => ({ type: 'Product', id })), 'Product']
+      //   : ['Product'],
     }),
     addProduct: builder.mutation({
       query: (body) => ({

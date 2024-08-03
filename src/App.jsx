@@ -74,10 +74,12 @@ const App = () => {
                   <button onClick={onCancel}>cancel</button>
                 </>
                 :
-                <li key={el.id} onClick={() => onUpdateProduct(el)}>{el.name}</li>
+                <>
+                  <li key={el.id} onClick={() => onUpdateProduct(el)}>{el.name}</li>
+                  <button onClick={() => onDeleteProduct(el.id)} >delete</button>
+                </>
               }
               {/* <li key={el.id} onClick={() => onUpdateProduct(el)}>{el.name}</li> */}
-              <button onClick={() => onDeleteProduct(el.id)} >delete</button>
             </>
           )
         })
