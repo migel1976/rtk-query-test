@@ -6,8 +6,10 @@ export const goodsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
   endpoints: (builder) => ({
     getGoods: builder.query({
-      // query: (limit = '') => `goods?${limit && `_limit=${limit}`}`
-      query: () => `goods`
+      query: (limit = '') => {
+        console.log(limit)
+        return `goods?${limit && `_limit=${limit}`}`
+      }
     })
   })
 })
