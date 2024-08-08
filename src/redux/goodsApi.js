@@ -38,7 +38,8 @@ export const goodsApi = createApi({
     }),
     updateProduct: builder.mutation({
       query: (body) => ({
-        url: `goods/${body.id}`,
+        // url: `goods/${body.id}`,
+        url: `edit/${body.id}`,
         method: 'PUT',
         body
       }),
