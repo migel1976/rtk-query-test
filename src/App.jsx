@@ -51,11 +51,12 @@ const App = () => {
   }
 
 
-  const filtereData = data.filter(el => {
-    return el.name.toLowerCase().includes(filterValue);
+  // const filtereData = data.filter(el => {
+  //   return el.name.toLowerCase().includes(filterValue);
+  //
+  // })
 
-  })
-
+  console.log('data is ', data)
 
   return (
     <>
@@ -73,8 +74,8 @@ const App = () => {
       {/* </select> */}
       <ul>
         {/* {data.map(el => <li key={el.id} onClick={() => onDeleteProduct(el.id)}>{el.name}</li>)} */}
-        {/* {data.map(el => { */}
-        {filtereData.map(el => {
+        {data.map(el => {
+          {/* {filtereData.map(el => { */ }
           return (
             <>
               {edit && el.id === id ?

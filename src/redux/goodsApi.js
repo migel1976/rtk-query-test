@@ -3,13 +3,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const goodsApi = createApi({
   reducerPath: 'goodsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
+  // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/users/' }),
   tagTypes: ['Product'],
   endpoints: (builder) => ({
     getGoods: builder.query({
       query: (limit = '') => {
         console.log(limit)
-        return `goods?${limit && `_limit=${limit}`}`
+        // return `goods?${limit && `_limit=${limit}`}`
+        return 'getall'
       },
       providesTags: ['Product']
       // providesTags: (result) => ['Product']
@@ -19,7 +21,8 @@ export const goodsApi = createApi({
     }),
     addProduct: builder.mutation({
       query: (body) => ({
-        url: 'goods',
+        // url: 'goods',
+        url: 'add',
         method: 'POST',
         body
       }),
@@ -27,7 +30,8 @@ export const goodsApi = createApi({
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({
-        url: `goods/${id}`,
+        // url: `goods/${id}`,
+        url: `remove/${id}`,
         method: 'DELETE'
       }),
       invalidatesTags: ['Product'],

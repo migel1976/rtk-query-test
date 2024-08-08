@@ -1,9 +1,20 @@
 {
   "goods": [
     {
-      "id": "1ab7",
-      "name": "ewff",
-      "status":"false"
+      "id": "34e4",
+      "name": "kite"
+    },
+    {
+      "id": "8697",
+      "name": "parachute"
+    },
+    {
+      "id": "a37c",
+      "name": "switch"
+    },
+    {
+      "id": "c8db",
+      "name": "выппыва"
     }
   ]
 }
